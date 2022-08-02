@@ -156,10 +156,8 @@
 		Python 3.7.6
 		```
     
-    03. Node.js
 
-
-## Node Installation 설치
+## Node Installation
 
 ### Mac OS
  Mac에서의 Node는 대부분이 개발 환경을 위해서 설치될 것이다. 여러 버젼의 Node에서 개발할 경우 여러 버젼의 Node를 설치하고 개발 환경에 적용하는 것은 꽤 번거로운 작업이다. nvm은 이를 해결해 주는 굉장히 유용한 도구다. nvm을 설치하여 여러 버젼의 노드를 설치하도록 한다. 이는 Node 애플리케이션 운용 환경(주로 리눅스 또는 도커)에서 유용하다.
@@ -258,55 +256,31 @@
      ```
 
 ### 리눅스(CentOS)
- 특정 버젼의 Node 애플리케이션만 운용하는 서버 환경이라면 특정 버젼의 Node만 소스 컴파일 설치하고 애플리케이션을 운용하면 베스트 일 것이다. Linux(CentOS) 에서 Node를 소스 컴파일 설치를 한다. 설치를 위해서는 Python3(정확히, 공유 라이브러리)가 설치되어 있어야 한다. 그리고 V8 엔진 컴파일을 위해 g++ 7.x 버젼이 필요하다. CentOS RPM 설치는 4.x까지 지원하기 때문에 별도로 설치와 설정을 해야 한다.
 
-1.	g++ 7.x 설치 및 설치
+1. 설치(바이너리)
+   
 
     ```sh
-    g++ --version
-    
-	g++ (GCC) 4.8.5 20150623 (Red Hat 4.8.5-39)
-    Copyright (C) 2015 Free Software Foundation, Inc.
-    
-    yum install centos-release-scl
-    yum install devtoolset-7-gcc*
-    scl enable devtoolset-7 bash
-    
-	g++ --version
-    
-	Thread model: posix
-    gcc version 7.3.1 20180303 (Red Hat 7.3.1-5) (GCC)
-    
+    wget https://nodejs.org/dist/v16.15.1/node-v16.15.1-linux-x64.tar.gz
+    tar xvfz node-v16.15.1-linux-x64.tar.gz    
+    cp -R node-v16.15.1-linux-x64 /usr/local/douzone/node16.15.1
     ```
 
-2.	설치
-    v14.4.0을 설치할 것이다. /usr/local/kickscar/node-v14.4.0에 설치할 것이다.
+2.	링크 작업
 
     ```sh
-    wget https://nodejs.org/dist/v14.4.0/node-v14.4.0.tar.gz
-    tar xvfz node-v14.4.0.tar.gz
-    
-	cd node-v14.4.0
-	./configure --prefix=/usr/local/kickscar/node-v14.4.0
-    make && make install
+    ln -s /usr/local/douzone/node16.15.1 /usr/local/douzone/node
 	
     ```
 
-3.	링크 작업
-
-    ```sh
-    ln -s /usr/local/kickscar/node-v14.4.0 /usr/local/kickscar/node
-	
-    ```
-
-4.	PATH 설정 (/etc/profile)
+3.	PATH 설정 (/etc/profile)
 
     ```sh
     # node 
-    export PATH=$PATH:/usr/local/kickscar/node/bin
+    export PATH=$PATH:/usr/local/douzone/node/bin
     ```
 
-5.	설정 적용 및 설치 확인
+4.	설정 적용 및 설치 확인
 
     ```sh
     source /etc/profile
@@ -314,5 +288,3 @@
     
 	v14.3.0
     ```
-    
-    
